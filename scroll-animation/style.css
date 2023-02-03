@@ -11,14 +11,16 @@ body {
   justify-content: flex-start;
   align-items: center;
   overflow-x: hidden;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0;
 }
 
 .container {
   display: flex;
+  /* background-color: blueviolet; */
   flex-direction: column;
   gap: 30px;
+  margin-bottom: 50px;
 }
 
 .content {
@@ -34,12 +36,8 @@ body {
   font-size: 36px;
   border-radius: 12px;
   box-shadow: 4px 10px 5px rgba(0, 0, 0, 0.2);
-}
-
-.content {
   transition: transform 0.3s ease-out;
 }
-
 .content:nth-of-type(odd) {
   transform: translateX(400%);
 }
