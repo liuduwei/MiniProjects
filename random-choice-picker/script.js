@@ -32,23 +32,33 @@ const highLightTag = (tag) => {
 };
 
 const randomTags = () => {
-  let times = 30;
-  setTimeout(() => {
-    clearInterval(interval);
-
-    setTimeout(() => {
+  const myPromise = new Promise((reslove, reject) => {
+    let times = 30;
+    let interval = setInterval(() => {
+      times--;
+      if (times < 0) {
+        reslove(interval);
+      }
       const tag = getRandomTag(tagNum.length);
       unHighLightTags();
       highLightTag(tag);
-    }, 1000);
-  }, times * 100);
+    }, 100);
+  }).then(res => clearInterval(res)).then(() => setTimeout(() => {
+      const tag = getRandomTag(tagNum.length);
+      unHighLightTags();
+      highLightTag(tag);
+  }), 1000).catch(reson => console.error(reson));
 
-  let interval = setInterval(() => {
-    const tag = getRandomTag(tagNum.length);
-    unHighLightTags();
-    highLightTag(tag);
-  }, 100);
-};
+//   setTimeout(() => {
+//     clearInterval(interval);
+
+//     setTimeout(() => {
+//       const tag = getRandomTag(tagNum.length);
+//       unHighLightTags();
+//       highLightTag(tag);
+//     }, 1000);
+//   }, times * 100);
+// };
 
 const createTags = () => {
   const tagHtml = textarea.value
