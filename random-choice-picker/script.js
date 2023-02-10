@@ -47,18 +47,7 @@ const randomTags = () => {
       const tag = getRandomTag(tagNum.length);
       unHighLightTags();
       highLightTag(tag);
-  }), 1000).catch(reson => console.error(reson));
-
-//   setTimeout(() => {
-//     clearInterval(interval);
-
-//     setTimeout(() => {
-//       const tag = getRandomTag(tagNum.length);
-//       unHighLightTags();
-//       highLightTag(tag);
-//     }, 1000);
-//   }, times * 100);
-// };
+  }), 1000).catch(reson => console.error(reson))};
 
 const createTags = () => {
   const tagHtml = textarea.value
@@ -72,83 +61,4 @@ const createTags = () => {
     .join("");
   tags.innerHTML = "";
   tags.insertAdjacentHTML("afterbegin", tagHtml);
-};
-
-// const tagsEl = document.querySelector(".tags");
-// const textarea = document.querySelector(".textarea");
-
-// textarea.focus();
-
-// textarea.addEventListener("keyup", (e) => {
-//   createTags(e.target.value);
-
-//   if (e.key === "Enter") {
-//     setTimeout(() => {
-//       e.target.value = "";
-//     }, 10);
-
-//     randomSelect();
-//   }
-// });
-
-// function createTags(input) {
-//   const tags = input
-//     .split(",")
-//     .filter((tag) => tag.trim() !== "")
-//     .map((tag) => tag.trim());
-
-//   tagsEl.innerHTML = "";
-
-//   tags.forEach((tag) => {
-//     const tagEl = document.createElement("span");
-//     tagEl.classList.add("tag");
-//     tagEl.innerText = tag;
-//     tagsEl.appendChild(tagEl);
-//   });
-// }
-
-// function randomSelect() {
-//   const times = 30;
-
-//   const interval = setInterval(() => {
-//     const randomTag = pickRandomTag();
-//     if (randomTag !== undefined) {
-//       highlightTag(randomTag);
-//     }
-//   }, 100);
-
-//   setTimeout(() => {
-//     clearInterval(interval);
-
-//     setTimeout(() => {
-//       const randomTag = pickRandomTag();
-
-//       highlightTag(randomTag);
-//     }, 100);
-//   }, times * 100);
-// }
-
-// function pickRandomTag() {
-//   const tags = document.querySelectorAll(".tag");
-//   return tags[Math.floor(Math.random() * tags.length)];
-// }
-
-// function highlightTag(tag) {
-//   tag.classList.add("highlight");
-// }
-
-// function unHighlightTag(tag) {
-//   tag.classList.remove("highlight");
-// }
-
-// const myPromise = new Promise((reslove, reject) => {
-//   console.log('promise start');
-//   reslove('dfe');
-//   setTimeout(reslove('df'),10);
-// });
-// console.log(myPromise);
-
-// console.log(myPromise.then(res => console.log(typeof res)));
-
-// console.log('sdfe');
-// Set up a route for the login page
+    };
