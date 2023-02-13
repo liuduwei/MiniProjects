@@ -31,6 +31,7 @@ body {
   justify-content: center;
   padding: 20px 30px;
   transition: width 0.6s linear;
+  overflow-x: hidden ;
 }
 
 .nav.active {
@@ -60,12 +61,6 @@ body {
   margin: 0;
 }
 
-.nav ul li a{
-  width: 0;
-  text-decoration: none;
-  color: #333;
-  transition: transform 0.6s linear;
-}
 
 
 .nav ul li{
@@ -80,8 +75,8 @@ body {
 
 
 .btn {
+  z-index: 99;
   cursor: pointer;
-  z-index: 999;
   background: none;
   outline: none;
   border: none;
@@ -109,5 +104,11 @@ body {
 
 .nav.active .line2 {
   transform:rotate(765deg) translateY(-8.8px);
+}
+
+.nav ul li a{
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.6s linear;
 }
 
