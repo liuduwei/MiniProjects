@@ -43,11 +43,19 @@ const randomTags = () => {
       unHighLightTags();
       highLightTag(tag);
     }, 100);
-  }).then(res => clearInterval(res)).then(() => setTimeout(() => {
-      const tag = getRandomTag(tagNum.length);
-      unHighLightTags();
-      highLightTag(tag);
-  }), 1000).catch(reson => console.error(reson))};
+  })
+    .then((res) => clearInterval(res))
+    .then(
+      () =>
+        setTimeout(() => {
+          const tag = getRandomTag(tagNum.length);
+          unHighLightTags();
+          highLightTag(tag);
+        }),
+      1000
+    )
+    .catch((reson) => console.error(reson));
+};
 
 const createTags = () => {
   const tagHtml = textarea.value
@@ -61,4 +69,4 @@ const createTags = () => {
     .join("");
   tags.innerHTML = "";
   tags.insertAdjacentHTML("afterbegin", tagHtml);
-    };
+};
