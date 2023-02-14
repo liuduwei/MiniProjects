@@ -1,23 +1,42 @@
 const counters = document.querySelectorAll(".counter");
 
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//   counters.forEach((counter) => {
+//     counter.innerText = "0";
+//     let target = +counter.dataset.target;
+//     let current = +counter.innerText;
+//     const increament = target / 200;
+//     const updateCounter = () => {
+//       if (current > target) {
+//         counter.innerText = `${target}`;
+//       } else {
+//         current += Math.ceil(increament);
+//         counter.innerText = current;
+//         setTimeout(updateCounter, 1);
+//       }
+//     };
+//     updateCounter();
+//   });
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
   counters.forEach((counter) => {
-    counter.innerText = "0";
+    counter.innerText = 0;
     let target = +counter.dataset.target;
     let current = +counter.innerText;
-    const increament = target / 200;
-    const updateCounter = () => {
-      if (current > target) {
-        counter.innerText = `${target}`;
+    const increament = Math.ceil(target / 200);
+    let interval = setInterval(() => {
+      if (current >= target) {
+        counter.innerText = target;
+        clearInterval(interval);
       } else {
-        current += Math.ceil(increament);
+        current += increament;
         counter.innerText = current;
-        setTimeout(updateCounter, 1);
       }
-    };
-    updateCounter();
+    }, 1);
   });
-});
+})
+
 
 // const count = function(Counter, timer = 0) {
 //   const intval = setInterval(() => {
