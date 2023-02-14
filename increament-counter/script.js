@@ -36,7 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
           counter.innerText = current;
         }
       }, 1);
-    }).then(counter => counter.style.color = 'red').catch(reson => console.error(reson));
+    })
+      .then((counter) =>
+        setTimeout(() => {
+          counter.style.color = "red";
+        }, 1000)
+      )
+      .catch((reson) => console.error(reson));
   });
 });
 
