@@ -19,24 +19,26 @@ const counters = document.querySelectorAll(".counter");
 //   });
 // });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   counters.forEach((counter) => {
     counter.innerText = 0;
-    let target = +counter.dataset.target;
-    let current = +counter.innerText;
+    const target = +counter.dataset.target;
     const increament = Math.ceil(target / 200);
-    let interval = setInterval(() => {
-      if (current >= target) {
-        counter.innerText = target;
-        clearInterval(interval);
-      } else {
-        current += increament;
-        counter.innerText = current;
-      }
-    }, 1);
+    let current = +counter.innerText;
+    const increamentNumber = new Promise((resolve, reject) => {
+      let interval = setInterval(() => {
+        if (current >= target) {
+          counter.innerText = target;
+          clearInterval(interval);
+          resolve(counter);
+        } else {
+          current += increament;
+          counter.innerText = current;
+        }
+      }, 1);
+    }).then(counter => counter.style.color = 'red').catch(reson => console.error(reson));
   });
-})
-
+});
 
 // const count = function(Counter, timer = 0) {
 //   const intval = setInterval(() => {
