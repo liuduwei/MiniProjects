@@ -18,7 +18,6 @@ containerSmallCups.addEventListener("click", (e) => {
 });
 
 const full = function (condition) {
-  console.log(condition);
   if (condition.left === 0) {
     domRemain.style.cssText += `flex:${condition.left}; line-height:0;`;
     domCompelet.style.cssText += `flex:${condition.drinked}; line-height:0; color:#333`;
