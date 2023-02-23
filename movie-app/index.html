@@ -1,14 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <title>Project</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer type="module" src="controller.js"></script>
+    <title>Project</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <input type="text" class="search" placeholder="search" />
+    </nav>
+    <div class="container">
+      <template class="tmpl--movie-card">
+        <style>
+          * {
+            margin: 0;
+          }
+          .card-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            /* width: 250px; 
+            height: 500px;*/
+            color: #fff;
+            overflow-y: hidden;
+          }
+
+          .card-container:hover .overview {
+            transform: translateY(0);
+          }
+
+          .detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--secondary-color);
+            padding: 15px;
+          }
+
+          ::slotted(.title) {
+            font-size: 20px;
+          }
+
+          ::slotted(.score) {
+            font-size: 18px;
+            color: burlywood;
+            background-color: gray;
+            display: block;
+            padding: 4px 8px;
+            border-radius: 3px;
+          }
+
+          ::slotted(.img) {
+            width: 100%;
+          }
+
+          .overview {
+            position: absolute;
+            bottom: 0;
+            background-color: #fff;
+            color: #111;
+            padding: 16px 32px 32px 32px;
+            transition: transform 0.3s linear;
+            transform: translateY(100%);
+          }
+
+          .overview-title {
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          ::slotted(.description) {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+          }
+        </style>
+
+        <div class="card-container">
+          <slot name="img">
+          </slot>
+          <div class="detail">
+            <slot name="title"></slot>
+            <slot name="score"></slot>
+          </div>
+          <div class="overview">
+            <h1 class="overview-title">Overview</h1>
+            <slot name="description"></slot>
+          </div>
+        </div>
+      </template>
+      <card-movie trending-index = '1'></card-movie>
+      <card-movie></card-movie>
+      <card-movie></card-movie>
+      <card-movie></card-movie>
+      <card-movie></card-movie>
+      <card-movie></card-movie>
+      <card-movie></card-movie>
+    </div>
+  </body>
 </html>
