@@ -17,13 +17,13 @@
         <style>
           * {
             margin: 0;
+            box-sizing: border-box;
           }
           .card-container {
             position: relative;
             display: flex;
             flex-direction: column;
-            /* width: 250px; 
-            height: 500px;*/
+            /*width: 250px; height: 500px;*/
             color: #fff;
             overflow-y: hidden;
           }
@@ -34,9 +34,11 @@
 
           .detail {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            gap: 15px;
             background-color: var(--secondary-color);
+            height: 100px;
             padding: 15px;
           }
 
@@ -93,13 +95,6 @@
           </div>
         </div>
       </template>
-      <card-movie trending-index = '1'></card-movie>
-      <card-movie></card-movie>
-      <card-movie></card-movie>
-      <card-movie></card-movie>
-      <card-movie></card-movie>
-      <card-movie></card-movie>
-      <card-movie></card-movie>
     </div>
   </body>
 </html>
