@@ -19,6 +19,7 @@ body {
   width: 100%;
   background-color:var(--secondary-color);
   height: 10vh;
+  padding: 15px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
