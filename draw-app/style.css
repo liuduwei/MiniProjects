@@ -25,7 +25,7 @@ canvas {
   width: 1200px;
   font-size: 54px;
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
 }
 
@@ -33,5 +33,5 @@ canvas {
   outline: none;
   border: none;
   font-size: 50px;
-  width: min-content;
+  width: 100px;
 }
