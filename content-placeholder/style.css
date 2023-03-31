@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', 'sans-serif';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  background-color: #eee;
+}
+
+ p {
+  color: #333;
+ }
+
+.content {
+  width: 350px;
+  height: 430px;
+  border-radius: 6px;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+}
+
+.container__img {
+  width: 100%;
+  height: 45%;
+  overflow: hidden;
+}
+
+.container__img img {
+  width: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.testimony__title {
+  font-size: 20px;
+  margin-top: 28px;
+  padding: 0 36px;
+}
+
+.testimony__description {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 14px 0px 28px 0px;
+  padding: 0 36px;
+}
+
+.person {
+  display: flex;
+  justify-content: start;
+  gap: 12px;
+  align-items: center;
+  padding: 0 36px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.avatar img {
+  width: 100%;
+  /* height: 100%; */
+  border-radius: 50%;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.detail__name {
+ color: #0e3e3e;
+ margin-bottom: 8px;
+}
+
+.detail__time {
+  margin-top: 4px;
+  color: #3e3e3e;
+  font-size: 12px;
+}
+
+.animation-blur div,
+.animation-blur span {
+  position: relative;
+}
+
+.animation-blur span {
+  white-space: nowrap;
+}
+
+.animation-blur div::before,
+.animation-blur span::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(246,247,248,1) 0%, rgba(234,235,236,1) 7%, rgba(246,247,248,1) 15%, rgba(246,247,248,1) 100%);
+  background-size: 200% 100%;
+  animation: loading linear 1s  infinite;
+}
+
+.animation-blur .container__img::before {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.animation-blur .testimony__title::before,
+.animation-blur .testimony__description::before {
+  width: 300px;
+  margin: 0 32px;
+}
+
+.animation-blur .detail::before {
+  background-color: transparent;
+}
+
+.animation-blur .avatar::before {
+  border-radius: 50%;
+}
+
+@keyframes loading {
+  0% {
+    background-position-x: 50%;
+  }
+
+  100% {
+    background-position-x: -150%;
+  }
+}
