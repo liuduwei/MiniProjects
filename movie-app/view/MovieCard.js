@@ -19,3 +19,5 @@ export class MovieCard extends HTMLElement {
   //   /* ... */
   // }
 }
+
+export const Trend = new Trending();
