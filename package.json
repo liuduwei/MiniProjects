@@ -1,0 +1,14 @@
+{
+  "name": "50days",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:liuduwei/MiniProjects.git",
+  "author": "liuduwei <17341730328@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile:sass-dev": "node-sass style.scss style.css -r -w --source-map true --source-map-contents sass"
+  },
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
