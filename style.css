@@ -6,13 +6,182 @@
 
 body {
   font-family: "Roboto", "sans-serif";
-  display: flex;
   flex-direction: column;
   gap: 3rem;
+  display: flex;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
   margin: 0;
+}
+
+/* content-plaveholder */
+.content_placeholder p {
+  color: #333;
+}
+
+.content_placeholder .content {
+  width: 350px;
+  height: 430px;
+  border-radius: 6px;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0content_placeholder 0.08);
+  background-color: #fff;
+}
+
+.content_placeholder .container__img {
+  width: 100%;
+  height: 45%;
+  overflow: hidden;
+}
+
+.content_placeholder .container__img img {
+  width: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.content_placeholder .testimony__title {
+  font-size: 20px;
+  margin-top: 28px;
+  padding: 0 36px;
+}
+
+.content_placeholder .testimony__description {
+  font-size: 12px;
+  line-height: 1content_placeholder 0.6;
+  margin: 14px 0px 28px 0px;
+  padding: 0 36px;
+}
+
+.content_placeholder .person {
+  display: flex;
+  justify-content: start;
+  gap: 12px;
+  align-items: center;
+  padding: 0 36px;
+}
+
+.content_placeholder .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.content_placeholder .avatar img {
+  width: 100%;
+  /* height: 100%; */
+  border-radius: 50%;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.content_placeholder .detail__name {
+  color: #0e3e3e;
+  margin-bottom: 8px;
+}
+
+.content_placeholder .detail__time {
+  margin-top: 4px;
+  color: #3e3e3e;
+  font-size: 12px;
+}
+
+.content_placeholder .animation-blur div,
+.content_placeholder .animation-blur span {
+  position: relative;
+}
+
+.content_placeholder .animation-blur span {
+  white-space: nowrap;
+}
+
+.content_placeholder .animation-blur div::before,
+.content_placeholder .animation-blur span::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(246, 247, 248, 1) 0%,
+    rgba(234, 235, 236, 1) 7%,
+    rgba(246, 247, 248, 1) 15%,
+    rgba(246, 247, 248, 1) 100%
+  );
+  background-size: 200% 100%;
+  animation: content_placeholder_loding linear 1s infinite;
+}
+
+.content_placeholder .animation-blur .container__img::before {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.content_placeholder .animation-blur .testimony__title::before,
+.content_placeholder .animation-blur .testimony__description::before {
+  width: 300px;
+  margin: 0 32px;
+}
+
+.content_placeholder .animation-blur .detail::before {
+  background-color: transparent;
+}
+
+.content_placeholder .animation-blur .avatar::before {
+  border-radius: 50%;
+}
+
+@keyframes content_placeholder_loding {
+  0% {
+    background-position-x: 50%;
+  }
+
+  100% {
+    background-position-x: -150%;
+  }
+}
+
+/* click-button */
+.click_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30vh;
+}
+
+.click_button .button--click {
+  position: relative;
+  color: #fff;
+  background-color: saddlebrown;
+  border: none;
+  outline: none;
+  width: 160px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.click_button .cirlce {
+  position: absolute;
+  background-color: rgba(255, 255, 255);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%) scale(0);
+  animation: click_button_scale 0.5s ease-out;
+}
+
+@keyframes click_button_scale {
+  to {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
 }
 
 /* blurry-loading */
