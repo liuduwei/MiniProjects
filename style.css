@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400&display=swap");
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden; }
 
 body {
   font-family: "Roboto", "sans-serif";
@@ -12,102 +13,138 @@ body {
   overflow-x: hidden;
   margin: 0; }
 
-/* content-plaveholder */
-.content_placeholder p {
-  color: #333; }
-
-.content_placeholder .content {
-  width: 350px;
-  height: 430px;
-  border-radius: 6px;
-  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.08);
-  background-color: #fff; }
-
-.content_placeholder .container__img {
+/* draw-app */
+.draw_app canvas {
+  margin-top: 100px;
+  border: solid #4423ee 5px;
   width: 100%;
-  height: 45%;
-  overflow: hidden; }
+  height: 50vh; }
 
-.content_placeholder .container__img img {
+.draw_app .toolbox {
   width: 100%;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px; }
-
-.content_placeholder .testimony__title {
-  font-size: 20px;
-  margin-top: 28px;
-  padding: 0 36px; }
-
-.content_placeholder .testimony__description {
-  font-size: 12px;
-  line-height: 0.6;
-  margin: 14px 0px 28px 0px;
-  padding: 0 36px; }
-
-.content_placeholder .person {
+  font-size: 54px;
   display: flex;
-  justify-content: start;
-  gap: 12px;
+  justify-content: stretch;
+  align-items: center; }
+
+.draw_app .num {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0 36px; }
+  text-align: center;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  width: 100px; }
 
-.content_placeholder .avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: inline-block; }
+/* dadjoke */
+.dadjoke {
+  background-color: #fff;
+  border-radius: 9px;
+  width: 80%;
+  text-align: center;
+  padding: 32px 56px; }
+  .dadjoke span {
+    color: #777; }
+  .dadjoke p {
+    font-size: 36px; }
+  .dadjoke button {
+    outline: none;
+    color: #fff;
+    background-color: purple;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: all 0.1s linear; }
+  .dadjoke button:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 8px 4px rgba(0, 0, 0, 0.4); }
+  .dadjoke button:active {
+    transform: translateY(-2px);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4); }
 
-.content_placeholder .avatar img {
-  width: 100%;
-  /* height: 100%; */
-  border-radius: 50%;
-  display: inline-block;
-  object-fit: contain; }
-
-.content_placeholder .detail__name {
-  color: #0e3e3e;
-  margin-bottom: 8px; }
-
-.content_placeholder .detail__time {
-  margin-top: 4px;
-  color: #3e3e3e;
-  font-size: 12px; }
-
-.content_placeholder .animation-blur div,
-.content_placeholder .animation-blur span {
-  position: relative; }
-
-.content_placeholder .animation-blur span {
-  white-space: nowrap; }
-
-.content_placeholder .animation-blur div::before,
-.content_placeholder .animation-blur span::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #f6f7f8 0%, #eaebec 7%, #f6f7f8 15%, #f6f7f8 100%);
-  background-size: 200% 100%;
-  animation: content_placeholder_loding linear 1s infinite; }
-
-.content_placeholder .animation-blur .container__img::before {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; }
-
-.content_placeholder .animation-blur .testimony__title::before,
-.content_placeholder .animation-blur .testimony__description::before {
-  width: 300px;
-  margin: 0 32px; }
-
-.content_placeholder .animation-blur .detail::before {
-  background-color: transparent; }
-
-.content_placeholder .animation-blur .avatar::before {
-  border-radius: 50%; }
+/* content-plaveholder */
+.content_placeholder {
+  overflow: hidden; }
+  .content_placeholder p {
+    overflow: hidden;
+    color: #333; }
+  .content_placeholder .content {
+    width: 350px;
+    height: 430px;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.08);
+    background-color: #fff; }
+  .content_placeholder .container__img {
+    width: 100%;
+    height: 45%;
+    overflow: hidden; }
+  .content_placeholder .container__img img {
+    width: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px; }
+  .content_placeholder .testimony__title {
+    font-size: 20px;
+    margin-top: 28px;
+    padding: 0 36px; }
+  .content_placeholder .testimony__description {
+    font-size: 12px;
+    line-height: 0.6;
+    margin: 14px 0px 28px 0px;
+    padding: 0 36px; }
+  .content_placeholder .person {
+    display: flex;
+    justify-content: start;
+    gap: 12px;
+    align-items: center;
+    padding: 0 36px; }
+  .content_placeholder .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden; }
+  .content_placeholder .avatar img {
+    overflow: hidden;
+    width: 100%;
+    /* height: 100%; */
+    border-radius: 50%;
+    object-fit: contain; }
+  .content_placeholder .detail__name {
+    color: #0e3e3e;
+    margin-bottom: 8px; }
+  .content_placeholder .detail__time {
+    margin-top: 4px;
+    color: #3e3e3e;
+    font-size: 12px; }
+  .content_placeholder .animation-blur div,
+  .content_placeholder .animation-blur span {
+    position: relative; }
+  .content_placeholder .animation-blur span {
+    white-space: nowrap; }
+  .content_placeholder .animation-blur div::before,
+  .content_placeholder .animation-blur span::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #f6f7f8 0%, #eaebec 7%, #f6f7f8 15%, #f6f7f8 100%);
+    background-size: 200% 100%;
+    animation: content_placeholder_loding linear 1s infinite; }
+  .content_placeholder .animation-blur .container__img::before {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
+  .content_placeholder .animation-blur .testimony__title::before,
+  .content_placeholder .animation-blur .testimony__description::before {
+    width: 300px;
+    margin: 0 32px; }
+  .content_placeholder .animation-blur .detail::before {
+    background-color: transparent; }
 
 @keyframes content_placeholder_loding {
   0% {
@@ -121,8 +158,10 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 30vh; }
+  height: 30vh;
+  overflow: hidden; }
   .click_button .button--click {
+    overflow: hidden;
     position: relative;
     color: #fff;
     background-color: saddlebrown;
@@ -183,7 +222,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0; }
+  margin: 0;
+  overflow: hidden; }
   .animation-nav .nav {
     background-color: #fff;
     width: 80px;
@@ -194,7 +234,7 @@ body {
     justify-content: center;
     padding: 20px 30px;
     transition: width 0.6s linear;
-    overflow-x: hidden; }
+    overflow: hidden; }
   .animation-nav .nav.active {
     width: 350px;
     padding: 20px 30px;
@@ -222,6 +262,7 @@ body {
   .animation-nav .nav.active ul li {
     transform: rotateY(360deg); }
   .animation-nav .btn {
+    overflow: hidden;
     z-index: 99;
     cursor: pointer;
     background: none;

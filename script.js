@@ -1,3 +1,138 @@
+//draw-app
+(function () {
+  const canvas = document.querySelector(".draw_app .draw");
+  const width = canvas.offsetWidth;
+  const height = canvas.offsetHeight;
+  canvas.width = width;
+  canvas.height = height;
+  const sizeInput = document.querySelector(".draw_app .num");
+  const crt = canvas.getContext("2d");
+  const colorInput = document.querySelector(".draw_app .color");
+  let fillColor = colorInput.value;
+  let radius = sizeInput.value;
+  const clearButton = document.querySelector(".draw_app .clear");
+  let xAxis;
+  let yAxis;
+  let x2;
+  let y2;
+  let isPressed = false;
+
+  const setRadius = function () {
+    radius = sizeInput.value;
+    // console.log('radius', radius);
+  };
+
+  const setColor = function () {
+    fillColor = colorInput.value;
+    // console.log('fillColor', fillColor);
+  };
+
+  colorInput.addEventListener("change", setColor);
+  sizeInput.addEventListener("change", setRadius);
+
+  const drawCircle = function () {
+    // console.log(radius);
+    crt.fillStyle = fillColor;
+    crt.beginPath();
+    crt.moveTo(xAxis, yAxis);
+    crt.arc(xAxis, yAxis, radius, 0, Math.PI * 2, true);
+    crt.fill();
+  };
+
+  const drawLine = function (x, y, x2, y2) {
+    crt.beginPath();
+    crt.moveTo(x, y);
+    crt.lineTo(x2, y2);
+    crt.lineWidth = radius * 2;
+    // crt.fillStyle = fillColor;
+    crt.strokeStyle = fillColor;
+    crt.stroke();
+    // console.log(fillColor);
+  };
+
+  clearButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    crt.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  canvas.addEventListener("mousedown", (e) => {
+    isPressed = true;
+    xAxis = e.offsetX;
+    yAxis = e.offsetY;
+  });
+
+  canvas.addEventListener("mouseup", (e) => {
+    isPressed = false;
+    xAxis = e.offsetX;
+    yAxis = e.offsetY;
+  });
+
+  canvas.addEventListener("mousemove", (e) => {
+    if (isPressed) {
+      x2 = e.offsetX;
+      y2 = e.offsetY;
+      drawLine(xAxis, yAxis, x2, y2);
+      drawCircle();
+      xAxis = e.offsetX;
+      yAxis = e.offsetY;
+      //console.log(e); console.log(e.offsetX, e.offsetY); console.log(xAxis, yAxis);
+      // if (e.movementX || e.movementY) {
+      // x2 = xAxis + e.movementX;
+      // y2 = yAxis + e.movementY;
+      // }
+    }
+  });
+})();
+//dadJoke
+
+//dadJoke
+
+let newLinePreventPrettier1 = "";
+(function () {
+  const btn = document.querySelector(".dadjoke .btn");
+  const joke = document.querySelector(".dadjoke .joke");
+  const storekJoke = async function (url) {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    // const json =  await response.json();
+    joke.innerText = (await response.json()).joke;
+  };
+
+  btn.addEventListener("click", () => {
+    storekJoke("https://icanhazdadjoke.com/");
+  });
+
+  // Api: get https://icanhazdadjoke.com/
+
+  // const httpreq = new XMLHttpRequest();
+  // httpreq.responseType = 'json';
+  // httpreq.onreadystatechange = () => {
+  //   if (httpreq.readyState === XMLHttpRequest.DONE) {
+  //     if (httpreq.status === 200) {
+  //       // console.log(httpreq);
+  //       // console.log(httpreq.response);
+  //       // console.log(typeof httpreq.response);
+  //       joke.innerText = httpreq.response.joke;
+  //     }
+  //   }
+  // };
+
+  // const getJoke = () => {
+  //   try {
+  //     httpreq.open("GET", "https://icanhazdadjoke.com/", true);
+  //     httpreq.setRequestHeader("Accept", "application/json");
+  //     httpreq.send();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+  // btn.addEventListener("click", getJoke);
+})();
+// let newLinePreventPrettier1 = "";
+
 // click_button
 (function () {
   const btn = document.querySelector(".button--click");
@@ -21,7 +156,9 @@
     }, 500);
   });
 })();
-let newLinePreventPrettier = "";
+// let newLinePreventPrettier = "";
+
+//
 (function () {
   const heading = document.querySelector(".heading--loading");
   const bg = document.querySelector(".bg");
