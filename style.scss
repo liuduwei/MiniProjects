@@ -23,6 +23,11 @@ body {
 }
 
 .wave_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50rem;
   overflow: initial;
   background-color: steelblue;
   .container {
@@ -44,6 +49,7 @@ body {
   }
 
   form {
+    overflow: initial;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -51,6 +57,7 @@ body {
   }
 
   form .form-control {
+    overflow: initial;
     position: relative;
   }
 
@@ -66,6 +73,7 @@ body {
   }
 
   label {
+    overflow: initial;
     position: absolute;
     top: 15px;
   }
@@ -331,27 +339,34 @@ body {
 }
 
 .scroll-animation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
   .content {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
     /* line-height: 120px; */
     /* text-align: center; */
     width: 300px;
     height: 120px;
     background-color: steelblue;
     color: #fff;
-    font-size: 36px;
+    font-size: 20px;
     border-radius: 12px;
     box-shadow: 4px 10px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-out;
   }
   .content:nth-of-type(odd) {
-    transform: translateX(400%);
+    transform: translateX(100%);
   }
 
   .content:nth-of-type(even) {
-    transform: translateX(-400%);
+    transform: translateX(100%);
   }
 
   .content.show {
@@ -362,6 +377,7 @@ body {
 .rotating-Navigation {
   background-color: #333;
   color: #222;
+  position: relative;
   .container {
     max-width: 100vw;
     min-height: 100vh;
@@ -382,7 +398,7 @@ body {
   }
 
   .circle-container {
-    position: fixed;
+    position: absolute;
     top: -100px;
     left: -100px;
     transition: transform 0.5s linear;
@@ -486,6 +502,7 @@ body {
 
 .random-choice-picker {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -525,7 +542,10 @@ body {
 
 // progress-step
 .progress-step {
+  display: flex;
+  align-items: center;
   width: 100%;
+  height: 100vh;
   background-color: var(--bg-color);
   .container {
     margin: 0 auto;
@@ -549,7 +569,7 @@ body {
     transform: translateY(-50%);
     height: 4px;
     width: 0;
-    z-index: -1;
+    z-index: 1;
     transition: 0.3s ease-out;
   }
 
@@ -577,6 +597,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: 0.3s ease-in;
+    z-index: 999;
   }
 
   .circle.active {
@@ -620,6 +641,7 @@ body {
 .kinetic-loader {
   width: 200px;
   height: 200px;
+  margin: 50px;
   overflow: initial;
   position: relative;
   &::before,
@@ -672,11 +694,15 @@ body {
 
 /*increament_conter*/
 .increament_conter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100vh;
   background-color: #8e8efd;
   color: #fff;
   .container {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -687,7 +713,7 @@ body {
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
 
   i {
@@ -700,22 +726,26 @@ body {
   }
 
   .description {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
-/*hidden-search*/
 .hidden_search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 50vh;
   background-image: linear-gradient(90deg, #7d5fff, #7158e2);
   .container--search {
     position: relative;
-    height: 50px;
+    height: 100%;
+    width: 100%;
   }
 
   .btn--search {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     background-color: #fff;
     border: none;
@@ -739,6 +769,9 @@ body {
   }
 
   .input--search {
+    position: absolute;
+    top: 50%;
+    height: 50%;
     background-color: #fff;
     border: none;
     font-size: 18px;
@@ -753,7 +786,6 @@ body {
   }
 }
 
-/*drop-drag*/
 .drop_drag {
   display: flex;
   justify-content: center;
@@ -790,7 +822,6 @@ body {
     border: solid #777 5px;
   }
 }
-/*expanding-pannel*/
 
 .expanding-pannel {
   max-width: 783px;
@@ -843,7 +874,6 @@ body {
   }
 }
 
-/* draw-app */
 .draw_app {
   canvas {
     margin-top: 100px;
@@ -871,11 +901,16 @@ body {
     width: 100px;
   }
 }
-/* dadjoke */
+
 .dadjoke {
-  background-color: #fff;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: beige;
   border-radius: 9px;
   width: 80%;
+  height: 500px;
   text-align: center;
   padding: 32px 56px;
   span {
@@ -883,7 +918,7 @@ body {
   }
 
   p {
-    font-size: 36px;
+    font-size: 20px;
   }
 
   button {
@@ -909,8 +944,8 @@ body {
   }
 }
 
-/* content-plaveholder */
 .content_placeholder {
+  // background-color: var(--progress-line-fill);
   overflow: hidden;
   p {
     overflow: hidden;
@@ -1046,7 +1081,6 @@ body {
   }
 }
 
-/* click-button */
 .click_button {
   display: flex;
   justify-content: center;
@@ -1054,6 +1088,7 @@ body {
   width: 100%;
   height: 30vh;
   overflow: hidden;
+  background-color: var(--progress-line-fill);
   .button--click {
     overflow: hidden;
     position: relative;
@@ -1090,13 +1125,16 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: var(--progress-line-empty);
+  height: 100vh;
+  width: 100vw;
   .bg {
     background-image: url(https://images.unsplash.com/photo-1576161787924-01bb08dad4a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2104&q=80);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 80vw;
-    width: 80vw;
+    height: 100%;
+    width: 100%;
     filter: blur(30px);
     overflow-x: hidden;
   }
@@ -1111,18 +1149,16 @@ body {
   }
 }
 
-/* animation-nav */
-
 .animation-nav {
-  /* background-color: #ece8ef; */
-  /* background-image: linear-gradient(
+  background-color: #ece8ef;
+  background-image: linear-gradient(
     to bottom,
     #ece8ef 0%,
     #ece8ef 50%,
     #4392f1 50%,
     #4392f1 100%
-  ); */
-  height: 50vh;
+  );
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -1218,12 +1254,12 @@ body {
   }
 }
 
-/* audio-button */
 .audio-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: slateblue; */
+  background-color: slateblue;
+  height: 100vh;
   .buttons {
     text-align: center;
   }

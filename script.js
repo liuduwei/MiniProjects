@@ -145,7 +145,37 @@
 })();
 
 (function scroll_animation() {
-  const boxes = document.querySelectorAll(".content");
+  const boxes = document.querySelectorAll(".scroll-animation .content");
+  console.log(boxes);
+  /*
+IntersectionObserver API
+ */
+  const obs = new IntersectionObserver(
+    (entries) => {
+      console.log(entries);
+      if (entries.length >= 1) {
+        entries.forEach((entry) => {
+          console.log(entry.isIntersecting);
+          if (entry.isIntersecting) entry.target.classList.add("show");
+          else entry.target.classList.remove("show");
+        });
+      }
+      if (entries[0].isIntersecting) entries[0].target.classList.add("show");
+      else entries[0].target.classList.remove("show");
+    },
+    {
+      root: null,
+      threshold: 1,
+      rootMargin: "0px 1200px 0px 1200px",
+      // rootMargin: "0px 0px 5px 0px ",
+      // rootMargin: "0px"
+    }
+  );
+
+  boxes.forEach((box) => {
+    // box.classList.add("show");
+    obs.observe(box);
+  });
   // const container = document.querySelector(".container");
   /**
    * old way
@@ -165,32 +195,6 @@
   //       }
   //   });
   // }
-
-  /*
-IntersectionObserver API
- */
-  const obs = new IntersectionObserver(
-    (entries) => {
-      if (entries.length >= 1) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("show");
-          else entry.target.classList.remove("show");
-        });
-      }
-      if (entries[0].isIntersecting) entries[0].target.classList.add("show");
-      else entries[0].target.classList.remove("show");
-    },
-    {
-      root: null,
-      threshold: 1,
-      rootMargin: "0px 400% 5px 400% ",
-      // rootMargin: "0px 0px 5px 0px ",
-    }
-  );
-
-  boxes.forEach((box) => {
-    obs.observe(box);
-  });
 })();
 
 (function rotating_Navigation() {
@@ -215,7 +219,7 @@ IntersectionObserver API
   const tags = document.querySelector(".tags");
   let tagNum = null;
 
-  textarea.focus();
+  // textarea.focus();
 
   textarea.addEventListener("keyup", (e) => {
     if (e.code === "Enter") {
@@ -292,13 +296,11 @@ IntersectionObserver API
   const progress = document.querySelector(".progress-step .progress--line");
 
   let currentCircle = 1;
-  console.log(circle);
 
   btnNext.addEventListener("click", function () {
     if (currentCircle >= circle.length) return;
 
     currentCircle++;
-    console.log(currentCircle);
 
     updateBtn();
     updateCircle();
@@ -309,7 +311,6 @@ IntersectionObserver API
     if (currentCircle <= 1) return;
 
     currentCircle--;
-    console.log(currentCircle);
 
     updateBtn();
     updateCircle();
@@ -582,8 +583,6 @@ IntersectionObserver API
     const clickEl = document.createElement("div");
     const xAxis = e.offsetX;
     const yAxis = e.offsetY;
-    console.log(xAxis);
-    console.log(yAxis);
     clickEl.style.cssText = `
     
     left: ${xAxis}px;
