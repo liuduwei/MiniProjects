@@ -1,5 +1,385 @@
-// hidden-search
-(function () {
+(function wave_form() {
+  const labelEmail = document.querySelector(".wave_form .email");
+  const labelPassword = document.querySelector(".wave_form .password");
+  const spansEmail = labelEmail.querySelectorAll(".wave_form span");
+  const spansPassword = labelPassword.querySelectorAll(".wave_form span");
+  const inputEmail = document.querySelector(".wave_form #email");
+  const inputPassword = document.querySelector(".wave_form #password");
+
+  const addDelayStyle = (els) => {
+    els.forEach((el, idx) => {
+      el.style.transitionDelay = `${idx * 50}ms`;
+    });
+  };
+  addDelayStyle(spansEmail);
+  addDelayStyle(spansPassword);
+
+  inputEmail.addEventListener("focus", () => {
+    labelEmail.classList.add("focus-animation");
+  });
+
+  inputEmail.addEventListener("blur", (e) => {
+    if (!e.target.value) labelEmail.classList.remove("focus-animation");
+  });
+
+  inputPassword.addEventListener("focus", () => {
+    labelPassword.classList.add("focus-animation");
+  });
+
+  inputPassword.addEventListener("blur", (e) => {
+    if (!e.target.value) labelPassword.classList.remove("focus-animation");
+  });
+})();
+
+(function theme_clock() {
+  const secondEl = document.querySelector(".theme_clock .s");
+  const minuteEl = document.querySelector(".theme_clock .m");
+  const hourEl = document.querySelector(".theme_clock .h");
+  // const btn = document.querySelector(".theme_clock .theme");
+  const dateEl = document.querySelector(".theme_clock .date");
+  const timeEl = document.querySelector(".theme_clock .time");
+
+  // 60 - 360
+  const timeToDeg = function (x) {
+    return (x / 60) * 360;
+  };
+
+  const monthEn = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const weekEn = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  let now = new Date();
+  let month = +now.getMonth(); //0 - 11
+  let date = +now.getDate(); //1-30,31
+  let day = +now.getDay(); //0 - 6
+  let hour = +now.getHours();
+  let minute = +now.getMinutes();
+  let second = +now.getSeconds();
+
+  const getTime = function () {
+    now = new Date();
+    month = +now.getMonth(); //0 - 11
+    date = +now.getDate(); //1-30,31
+    day = +now.getDay(); //0 - 6
+    hour = +now.getHours();
+    minute = +now.getMinutes();
+    second = +now.getSeconds();
+  };
+
+  const updateClock = function () {
+    //⏰
+    secondEl.style.transform = `translate(-50%, -100%) rotate(${timeToDeg(
+      second
+    )}deg)`;
+    minuteEl.style.transform = `translate(-50%, -100%) rotate(${timeToDeg(
+      minute
+    )}deg)`;
+    hourEl.style.transform = `translate(-50%, -100%) rotate(${timeToDeg(
+      hour
+    )}deg)`;
+    // 21:21
+    timeEl.innerText =
+      hour > 12 ? `${hour - 12}:${minute} PM` : `${hour}:${minute} AM`;
+    // date
+    dateEl.querySelector(
+      ".text"
+    ).innerHTML = `${weekEn[day]},&nbsp; ${monthEn[month]}`;
+    // cirlr
+    dateEl.querySelector(".circle").innerText = `${date}`;
+  };
+  updateClock();
+
+  const secTimmer = setInterval(() => {
+    if (second >= 60) {
+      getTime();
+      updateClock();
+    } else {
+      second++;
+      secondEl.style.transform = `translate(-50%, -100%) rotate(${timeToDeg(
+        second
+      )}deg)`;
+    }
+  }, 1000);
+
+  // const minuteTimmer = setInterval(() => {
+  //   if (minute >= 60) {
+  //     minute = 0;
+  //   } else {
+  //     minute++;
+  //   }
+  //   minuteEl.style.transform = `translate(-50%, -100%) rotate(${timeToDeg(
+  //     minute
+  //   )}deg)`;
+  // }, 1000 * 60);
+
+  // const hourTimmer = setInterval((hour) => {
+  //   if (hour >= 24) {
+  //     hour = 0;
+  //   } else {
+  //     hour++;
+  //   }
+  //   hourEl.style.transform = `translate(-50%, -100%) rotate(${timeToDeg(
+  //     hour
+  //   )}deg)`;
+  // }, 1000 * 60 * 60);
+})();
+
+(function scroll_animation() {
+  const boxes = document.querySelectorAll(".content");
+  // const container = document.querySelector(".container");
+  /**
+   * old way
+   */
+  // window.addEventListener('scroll', checkBoxes);
+
+  // function checkBoxes() {
+  //   const triggerBottom = window.innerHeight * 6 / 7 + 50;
+
+  //   boxes.forEach(box => {
+  //       const boxTop = box.getBoundingClientRect().top
+
+  //       if(boxTop < triggerBottom) {
+  //           box.classList.add('show')
+  //       } else {
+  //           box.classList.remove('show')
+  //       }
+  //   });
+  // }
+
+  /*
+IntersectionObserver API
+ */
+  const obs = new IntersectionObserver(
+    (entries) => {
+      if (entries.length >= 1) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+          else entry.target.classList.remove("show");
+        });
+      }
+      if (entries[0].isIntersecting) entries[0].target.classList.add("show");
+      else entries[0].target.classList.remove("show");
+    },
+    {
+      root: null,
+      threshold: 1,
+      rootMargin: "0px 400% 5px 400% ",
+      // rootMargin: "0px 0px 5px 0px ",
+    }
+  );
+
+  boxes.forEach((box) => {
+    obs.observe(box);
+  });
+})();
+
+(function rotating_Navigation() {
+  const btnOpen = document.querySelector(".rotating-Navigation .open");
+  const btnClose = document.querySelector(".rotating-Navigation .close");
+  const nav = document.querySelector(".rotating-Navigation nav");
+  const container = document.querySelector(".rotating-Navigation .container");
+
+  btnOpen.addEventListener("click", function () {
+    nav.classList.add("active");
+    container.classList.add("active");
+  });
+
+  btnClose.addEventListener("click", function () {
+    nav.classList.remove("active");
+    container.classList.remove("active");
+  });
+})();
+
+(function random_choice_picker() {
+  const textarea = document.querySelector(".textarea");
+  const tags = document.querySelector(".tags");
+  let tagNum = null;
+
+  textarea.focus();
+
+  textarea.addEventListener("keyup", (e) => {
+    if (e.code === "Enter") {
+      setTimeout(() => {
+        textarea.value = "";
+      }, 100);
+      tagNum = document.querySelectorAll(".tag");
+      randomTags();
+    } else {
+      setTimeout(createTags, 50);
+    }
+  });
+
+  const getRandomTag = (tagLength) => {
+    const getRandomInt = (max) => Math.floor(Math.random() * max);
+    return tagNum[getRandomInt(tagLength)];
+  };
+
+  const unHighLightTags = () => {
+    tagNum.forEach((tag) => {
+      tag.classList.remove("highlight");
+    });
+  };
+
+  const highLightTag = (tag) => {
+    tag.classList.add("highlight");
+  };
+
+  const randomTags = () => {
+    const myPromise = new Promise((reslove, reject) => {
+      let times = 30;
+      let interval = setInterval(() => {
+        times--;
+        if (times < 0) {
+          reslove(interval);
+        }
+        const tag = getRandomTag(tagNum.length);
+        unHighLightTags();
+        highLightTag(tag);
+      }, 100);
+    })
+      .then((res) => clearInterval(res))
+      .then(
+        () =>
+          setTimeout(() => {
+            const tag = getRandomTag(tagNum.length);
+            unHighLightTags();
+            highLightTag(tag);
+          }),
+        1000
+      )
+      .catch((reson) => console.error(reson));
+  };
+
+  const createTags = () => {
+    const tagHtml = textarea.value
+      .split(",")
+      .filter((tag) => tag.trim() !== "")
+      .map(
+        (tag) => `
+    <div class="tag" >${tag.trim()}</div>
+  `
+      )
+      .join("");
+    tags.innerHTML = "";
+    tags.insertAdjacentHTML("afterbegin", tagHtml);
+  };
+})();
+
+(function progress_step() {
+  const btnNext = document.querySelector(".progress-step .btn--next");
+  const btnPrev = document.querySelector(".progress-step .btn--prev");
+  const circle = document.querySelectorAll(".progress-step .circle");
+  const progress = document.querySelector(".progress-step .progress--line");
+
+  let currentCircle = 1;
+  console.log(circle);
+
+  btnNext.addEventListener("click", function () {
+    if (currentCircle >= circle.length) return;
+
+    currentCircle++;
+    console.log(currentCircle);
+
+    updateBtn();
+    updateCircle();
+    updateProgress();
+  });
+
+  btnPrev.addEventListener("click", function () {
+    if (currentCircle <= 1) return;
+
+    currentCircle--;
+    console.log(currentCircle);
+
+    updateBtn();
+    updateCircle();
+    updateProgress();
+  });
+
+  const updateCircle = function () {
+    circle.forEach(function (circle, idx) {
+      if (idx < currentCircle) circle.classList.add("active");
+      else circle.classList.remove("active");
+    });
+  };
+
+  const updateBtn = function () {
+    switch (currentCircle) {
+      case 1:
+        btnPrev.classList.remove("active");
+        btnPrev.setAttribute("disabled", "");
+        break;
+      case 4:
+        btnNext.classList.remove("active");
+        btnNext.setAttribute("disabled", "");
+        break;
+      default:
+        btnNext.classList.add("active");
+        btnNext.removeAttribute("disabled");
+        btnPrev.classList.add("active");
+        btnPrev.removeAttribute("disabled");
+    }
+  };
+
+  const updateProgress = function () {
+    const widthPercent = `${
+      ((currentCircle - 1) / (circle.length - 1)) * 100
+    }%`;
+    progress.style.width = widthPercent;
+  };
+})();
+
+(function increament_conter() {
+  const counters = document.querySelectorAll(".increament_conter .counter");
+  document.addEventListener("DOMContentLoaded", () => {
+    counters.forEach((counter) => {
+      counter.innerText = 0;
+      const target = +counter.dataset.target;
+      const increament = Math.ceil(target / 200);
+      let current = +counter.innerText;
+      const increamentNumber = new Promise((resolve, reject) => {
+        let interval = setInterval(() => {
+          if (current >= target) {
+            counter.innerText = target;
+            clearInterval(interval);
+            resolve(counter);
+          } else {
+            current += increament;
+            counter.innerText = current;
+          }
+        }, 1);
+      })
+        .then((counter) =>
+          setTimeout(() => {
+            counter.style.color = "red";
+          }, 1000)
+        )
+        .catch((reson) => console.error(reson));
+    });
+  });
+})();
+
+(function hidden_search() {
   const containerSearch = document.querySelector(
     ".hidden_search .container--search"
   );
@@ -11,9 +391,8 @@
     input.focus();
   });
 })();
-var newLinePreventPrettier;
-// expanding-pannel
-(function () {
+
+(function drag_drop() {
   const empties = document.querySelectorAll(".drop_drag .empty");
   const fill = document.querySelector(".drop_drag .fill");
 
@@ -49,8 +428,8 @@ var newLinePreventPrettier;
     // });
   });
 })();
-var newLinePreventPrettier;
-(function () {
+
+(function expanding_pannel() {
   const panelContainer = document.querySelector(
     ".expanding-pannel .panel-container"
   );
@@ -67,9 +446,7 @@ var newLinePreventPrettier;
   };
 })();
 
-var newLinePreventPrettier2 = "";
-//draw-app
-(function () {
+(function draw_app() {
   const canvas = document.querySelector(".draw_app .draw");
   const width = canvas.offsetWidth;
   const height = canvas.offsetHeight;
@@ -153,12 +530,8 @@ var newLinePreventPrettier2 = "";
     }
   });
 })();
-//dadJoke
 
-//dadJoke
-
-let newLinePreventPrettier1 = "";
-(function () {
+(function dad_joke() {
   const btn = document.querySelector(".dadjoke .btn");
   const joke = document.querySelector(".dadjoke .joke");
   const storekJoke = async function (url) {
@@ -201,10 +574,8 @@ let newLinePreventPrettier1 = "";
   // };
   // btn.addEventListener("click", getJoke);
 })();
-// let newLinePreventPrettier1 = "";
 
-// click_button
-(function () {
+(function click_button() {
   const btn = document.querySelector(".button--click");
 
   btn.addEventListener("click", (e) => {
@@ -226,10 +597,8 @@ let newLinePreventPrettier1 = "";
     }, 500);
   });
 })();
-// let newLinePreventPrettier = "";
 
-//
-(function () {
+(function blurry_loading() {
   const heading = document.querySelector(".heading--loading");
   const bg = document.querySelector(".bg");
 
@@ -257,25 +626,26 @@ let newLinePreventPrettier1 = "";
   };
 })();
 
-// animation-nav
-const animation_nav_btnEl = document.querySelector(".animation-nav .btn");
-const animation_nav_navEl = document.querySelector(".animation-nav .nav");
-animation_nav_btnEl.addEventListener("click", () => {
-  animation_nav_navEl.classList.toggle("active");
-});
-
-// audio-button
-const audio_button_btnContainer = document.querySelector(".buttons");
-const audio_button_audios = document.querySelectorAll("audio");
-const playSelectAudio = (el) => {
-  const selectAudioEl = document.querySelector(`.${el.innerText}`);
-  audio_button_audios.forEach((audio) => {
-    audio.pause();
+(function animation_nav() {
+  const animation_nav_btnEl = document.querySelector(".animation-nav .btn");
+  const animation_nav_navEl = document.querySelector(".animation-nav .nav");
+  animation_nav_btnEl.addEventListener("click", () => {
+    animation_nav_navEl.classList.toggle("active");
   });
-  selectAudioEl.play();
-};
+})();
 
-audio_button_btnContainer.addEventListener("click", (e) => {
-  if (e.target == e.currentTarget) return;
-  playSelectAudio(e.target);
-});
+(function audio_button() {
+  const audio_button_btnContainer = document.querySelector(".buttons");
+  const audio_button_audios = document.querySelectorAll("audio");
+  const playSelectAudio = (el) => {
+    const selectAudioEl = document.querySelector(`.${el.innerText}`);
+    audio_button_audios.forEach((audio) => {
+      audio.pause();
+    });
+    selectAudioEl.play();
+  };
+  audio_button_btnContainer.addEventListener("click", (e) => {
+    if (e.target == e.currentTarget) return;
+    playSelectAudio(e.target);
+  });
+})();
