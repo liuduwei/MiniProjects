@@ -1,3 +1,59 @@
+// expanding-pannel
+(function () {
+  const empties = document.querySelectorAll(".drop_drag .empty");
+  const fill = document.querySelector(".drop_drag .fill");
+
+  fill.addEventListener("dragstart", function () {
+    this.classList.add("hold");
+  });
+  fill.addEventListener("dragend", function () {
+    this.classList.remove("hold");
+  });
+
+  empties.forEach((e) => {
+    // e.addEventListener('drag', (e) => {
+    //   console.log('drag', e);
+    // });
+    // e.addEventListener('dragend', function() {
+    // });
+    e.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+    e.addEventListener("dragenter", function (e) {
+      e.preventDefault();
+      this.classList.add("hovered");
+    });
+    e.addEventListener("drop", function (e) {
+      this.appendChild(fill);
+      this.classList.remove("hovered");
+    });
+    e.addEventListener("dragleave", function (e) {
+      this.classList.remove("hovered");
+    });
+    // e.addEventListener('dragstart', (e) => {
+    //   console.log('dragstart', e);
+    // });
+  });
+})();
+let newLinePreventPrettier;
+(function () {
+  const panelContainer = document.querySelector(
+    ".expanding-pannel .panel-container"
+  );
+  const panels = document.querySelectorAll(".expanding-pannel .panel");
+
+  panelContainer.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("panel")) return;
+    removeAllActice();
+    e.target.classList.toggle("active");
+  });
+
+  const removeAllActice = function () {
+    panels.forEach((panel) => panel.classList.remove("active"));
+  };
+})();
+
+let newLinePreventPrettier2 = "";
 //draw-app
 (function () {
   const canvas = document.querySelector(".draw_app .draw");
