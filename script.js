@@ -166,7 +166,7 @@ IntersectionObserver API
     {
       root: null,
       threshold: 1,
-      rootMargin: "0px 1200px 0px 1200px",
+      rootMargin: "0px 400% 0px 400%",
       // rootMargin: "0px 0px 5px 0px ",
       // rootMargin: "0px"
     }
