@@ -13,6 +13,41 @@ body {
   overflow-x: hidden;
   margin: 0; }
 
+/*hidden-search*/
+.hidden_search {
+  width: 100%;
+  background-image: linear-gradient(90deg, #7d5fff, #7158e2); }
+  .hidden_search .container--search {
+    position: relative;
+    height: 50px; }
+  .hidden_search .btn--search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    font-size: 24px;
+    transition: transform 0.3s ease; }
+  .hidden_search .container--search.active .btn--search {
+    transform: translateX(198px); }
+  .hidden_search .container--search.active .input--search {
+    width: 200px; }
+  .hidden_search .btn--serach:focus {
+    outline: none; }
+  .hidden_search .input--search {
+    background-color: #fff;
+    border: none;
+    font-size: 18px;
+    padding: 0px 18px;
+    height: 50px;
+    width: 0px;
+    transition: width 0.3s ease; }
+  .hidden_search .input--search:focus {
+    outline: none; }
+
 /*drop-drag*/
 .drop_drag {
   display: flex;

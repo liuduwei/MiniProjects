@@ -1,3 +1,17 @@
+// hidden-search
+(function () {
+  const containerSearch = document.querySelector(
+    ".hidden_search .container--search"
+  );
+  const btnSearch = document.querySelector(".hidden_search .btn--search");
+  const input = document.querySelector(".hidden_search .input--search");
+
+  btnSearch.addEventListener("click", function () {
+    containerSearch.classList.toggle("active");
+    input.focus();
+  });
+})();
+var newLinePreventPrettier;
 // expanding-pannel
 (function () {
   const empties = document.querySelectorAll(".drop_drag .empty");
@@ -35,7 +49,7 @@
     // });
   });
 })();
-let newLinePreventPrettier;
+var newLinePreventPrettier;
 (function () {
   const panelContainer = document.querySelector(
     ".expanding-pannel .panel-container"
@@ -53,7 +67,7 @@ let newLinePreventPrettier;
   };
 })();
 
-let newLinePreventPrettier2 = "";
+var newLinePreventPrettier2 = "";
 //draw-app
 (function () {
   const canvas = document.querySelector(".draw_app .draw");
