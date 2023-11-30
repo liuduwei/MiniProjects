@@ -351,32 +351,30 @@ IntersectionObserver API
 })();
 
 (function increament_conter() {
-  const counters = document.querySelectorAll(".increament_conter .counter");
-  document.addEventListener("DOMContentLoaded", () => {
-    counters.forEach((counter) => {
+  var counters = document.querySelectorAll(".increament_conter .counter");
+  var obs = new IntersectionObserver(function increment(entries) {
+    entries.forEach((entry) => {
+      let counter = entry.target;
       counter.innerText = 0;
-      const target = +counter.dataset.target;
-      const increament = Math.ceil(target / 200);
+      let counterTarget = +counter.dataset.target;
+      let increament = Math.ceil(counterTarget / 200);
       let current = +counter.innerText;
-      const increamentNumber = new Promise((resolve, reject) => {
+      let increamentNumber = new Promise((resolve, reject) => {
         let interval = setInterval(() => {
-          if (current >= target) {
-            counter.innerText = target;
+          if (current >= counterTarget) {
+            counter.innerText = counterTarget;
             clearInterval(interval);
             resolve(counter);
           } else {
             current += increament;
             counter.innerText = current;
           }
-        }, 1);
-      })
-        .then((counter) =>
-          setTimeout(() => {
-            counter.style.color = "red";
-          }, 1000)
-        )
-        .catch((reson) => console.error(reson));
+        }, 2);
+      }).catch((reson) => console.error(reson));
     });
+  });
+  counters.forEach(function bindObs(counter) {
+    obs.observe(counter);
   });
 })();
 
@@ -598,31 +596,36 @@ IntersectionObserver API
 })();
 
 (function blurry_loading() {
-  const heading = document.querySelector(".heading--loading");
-  const bg = document.querySelector(".bg");
+  var containerEl = document.querySelector(".blurry-loading");
+  var obs = new IntersectionObserver(function loading() {
+    var heading = document.querySelector(".heading--loading");
+    var bg = document.querySelector(".bg");
+    var loading = 0;
 
-  let loading = 0;
+    var intval = setInterval(increaseLoading, 30);
 
-  let intval = setInterval(increaseLoading, 30);
+    function increaseLoading() {
+      loading++;
 
-  function increaseLoading() {
-    loading++;
+      if (loading > 99) {
+        clearInterval(intval);
+      }
 
-    if (loading > 99) {
-      clearInterval(intval);
+      renderBlur(loading);
     }
+    const renderBlur = function (loading) {
+      bg.style.filter = `blur(${scale(loading, 0, 100, 30, 0)}px)`;
+      heading.style.opacity = scale(loading, 0, 100, 1, 0);
+      heading.innerText = `${loading}%`;
+    };
 
-    renderBlur(loading);
-  }
-  const renderBlur = function (loading) {
-    bg.style.filter = `blur(${scale(loading, 0, 100, 30, 0)}px)`;
-    heading.style.opacity = scale(loading, 0, 100, 1, 0);
-    heading.innerText = `${loading}%`;
-  };
-
-  const scale = function (num, in_min, in_max, out_min, out_max) {
-    return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
-  };
+    const scale = function (num, in_min, in_max, out_min, out_max) {
+      return (
+        ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+      );
+    };
+  });
+  obs.observe(containerEl);
 })();
 
 (function animation_nav() {

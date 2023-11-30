@@ -29,26 +29,59 @@
         </button>
       </nav>
     </div>
-    <div class="audio-button">
-      <audio class="applause" src="sounds/applause.mp3"></audio>
-      <audio class="boo" src="sounds/boo.mp3"></audio>
-      <audio class="gasp" src="sounds/gasp.mp3"></audio>
-      <audio class="tada" src="sounds/tada.mp3"></audio>
-      <audio class="victory" src="sounds/victory.mp3"></audio>
-      <audio class="wrong" src="sounds/wrong.mp3"></audio>
-      <div class="buttons">
-        <h1 style="color: #fff">Click to play sounds</h1>
-        <button class="btn">applause</button>
-        <button class="btn">boo</button>
-        <button class="btn">gasp</button>
-        <button class="btn">tada</button>
-        <button class="btn">victory</button>
-        <button class="btn">wrong</button>
+    <div class="kinetic-loader"></div>
+    <div class="progress-step">
+      <div class="container">
+        <div class="container--progress">
+          <div class="progress--line"></div>
+          <div class="circle active">1</div>
+          <div class="circle">2</div>
+          <div class="circle">3</div>
+          <div class="circle">4</div>
+        </div>
+        <button class="btn btn--prev" disabled>Prve</button>
+        <button class="btn btn--next active">Next</button>
       </div>
     </div>
-    <div class="blurry-loading">
-      <div class="bg"></div>
-      <h1 class="heading--loading">0%</h1>
+    <div class="theme_clock light">
+      <button class="theme">Light mode</button>
+      <div class="clock">
+        <div class="dot"></div>
+        <div class="s"></div>
+        <div class="m"></div>
+        <div class="h"></div>
+      </div>
+      <p class="time">2:55 PM</p>
+      <div class="date">
+        <p class="text">Monday, &nbsp; FEB</p>
+        <div class="circle">27</div>
+      </div>
+    </div>
+    <div class="wave_form">
+      <div class="container">
+        <h1>Please Login</h1>
+        <form action="#">
+          <div class="form-control">
+            <label for="email" class="email">
+              <span>E</span><span>m</span><span>a</span><span>i</span
+              ><span>l</span>
+            </label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="form-control">
+            <label for="password" class="password">
+              <span>P</span><span>a</span><span>s</span><span>s</span
+              ><span>w</span><span>o</span><span>r</span><span>d</span></label
+            >
+            <input type="password" id="password" required />
+          </div>
+          <button class="btn">Login</button>
+          <div class="discribe">
+            <a href="#" class="forget">Don't have account?</a>
+            <a href="#" class="register">Register?</a>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="click_button">
       <button class="button--click">Click me</button>
@@ -82,21 +115,6 @@
           </div>
         </figcaption>
       </figure>
-    </div>
-    <div class="dadjoke">
-      <span>Don't Laugh Challenge</span>
-      <p class="joke">// dadjokes</p>
-      <button class="btn">Get Another Joke</button>
-    </div>
-    <div class="draw_app">
-      <canvas class="draw"></canvas>
-      <div class="toolbox">
-        <div class="size">
-          <input class="num" type="number" value="5" aria-label="size" />
-        </div>
-        <input type="color" class="color" aria-label="dfe" />
-        <button class="clear" type="button" aria-label="232">X</button>
-      </div>
     </div>
     <div class="expanding-pannel">
       <div class="container panel-container">
@@ -142,14 +160,6 @@
         </div>
       </div>
     </div>
-    <div class="drop_drag">
-      <div class="empty">
-        <div class="fill" draggable="true"></div>
-      </div>
-      <div class="empty"></div>
-      <div class="empty"></div>
-      <div class="empty"></div>
-    </div>
     <div class="hidden_search">
       <div class="container--search">
         <input type="text" class="input--search" placeholder="Search..." />
@@ -158,6 +168,51 @@
         </button>
       </div>
     </div>
+    <div class="drop_drag">
+      <div class="empty">
+        <div class="fill" draggable="true"></div>
+      </div>
+      <div class="empty"></div>
+      <div class="empty"></div>
+      <div class="empty"></div>
+    </div>
+    <div class="audio-button">
+      <audio class="applause" src="sounds/applause.mp3"></audio>
+      <audio class="boo" src="sounds/boo.mp3"></audio>
+      <audio class="gasp" src="sounds/gasp.mp3"></audio>
+      <audio class="tada" src="sounds/tada.mp3"></audio>
+      <audio class="victory" src="sounds/victory.mp3"></audio>
+      <audio class="wrong" src="sounds/wrong.mp3"></audio>
+      <div class="buttons">
+        <h1 style="color: #fff">Click to play sounds</h1>
+        <button class="btn">applause</button>
+        <button class="btn">boo</button>
+        <button class="btn">gasp</button>
+        <button class="btn">tada</button>
+        <button class="btn">victory</button>
+        <button class="btn">wrong</button>
+      </div>
+    </div>
+    <div class="blurry-loading">
+      <div class="bg"></div>
+      <h1 class="heading--loading">0%</h1>
+    </div>
+    <div class="dadjoke">
+      <span>Don't Laugh Challenge</span>
+      <p class="joke">// dadjokes</p>
+      <button class="btn">Get Another Joke</button>
+    </div>
+    <div class="draw_app">
+      <canvas class="draw"></canvas>
+      <div class="toolbox">
+        <div class="size">
+          <input class="num" type="number" value="5" aria-label="size" />
+        </div>
+        <input type="color" class="color" aria-label="dfe" />
+        <button class="clear" type="button" aria-label="232">X</button>
+      </div>
+    </div>
+
     <div class="increament_conter">
       <div class="container">
         <div class="container-count twitter">
@@ -175,20 +230,6 @@
           <p class="counter" data-target="7500">0</p>
           <p class="description">Facebook Fans</p>
         </div>
-      </div>
-    </div>
-    <div class="kinetic-loader"></div>
-    <div class="progress-step">
-      <div class="container">
-        <div class="container--progress">
-          <div class="progress--line"></div>
-          <div class="circle active">1</div>
-          <div class="circle">2</div>
-          <div class="circle">3</div>
-          <div class="circle">4</div>
-        </div>
-        <button class="btn btn--prev" disabled>Prve</button>
-        <button class="btn btn--next active">Next</button>
       </div>
     </div>
     <div class="random-choice-picker">
@@ -282,46 +323,6 @@
           <h1>XBox Series X</h1>
           <a href="#" class="btn--buy">Buy now</a>
         </div>
-      </div>
-    </div>
-    <div class="theme_clock light">
-      <button class="theme">Light mode</button>
-      <div class="clock">
-        <div class="dot"></div>
-        <div class="s"></div>
-        <div class="m"></div>
-        <div class="h"></div>
-      </div>
-      <p class="time">2:55 PM</p>
-      <div class="date">
-        <p class="text">Monday, &nbsp; FEB</p>
-        <div class="circle">27</div>
-      </div>
-    </div>
-    <div class="wave_form">
-      <div class="container">
-        <h1>Please Login</h1>
-        <form action="#">
-          <div class="form-control">
-            <label for="email" class="email">
-              <span>E</span><span>m</span><span>a</span><span>i</span
-              ><span>l</span>
-            </label>
-            <input type="email" id="email" required />
-          </div>
-          <div class="form-control">
-            <label for="password" class="password">
-              <span>P</span><span>a</span><span>s</span><span>s</span
-              ><span>w</span><span>o</span><span>r</span><span>d</span></label
-            >
-            <input type="password" id="password" required />
-          </div>
-          <button class="btn">Login</button>
-          <div class="discribe">
-            <a href="#" class="forget">Don't have account?</a>
-            <a href="#" class="register">Register?</a>
-          </div>
-        </form>
       </div>
     </div>
   </body>
